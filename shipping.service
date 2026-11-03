@@ -1,0 +1,18 @@
+[Unit]
+Description=Shipping Service
+After=network-online.target
+
+[Service]
+User=roboshop
+WorkingDirectory=/app
+Environment=CART_ENDPOINT=cart.daws-92s.space:8080
+Environment=DB_HOST=mysql.daws-92s.space
+Environment=DB_USER=shipping
+Environment=DB_PASSWORD=RoboShop@1
+ExecStart=/usr/bin/java -jar /app/shipping.jar
+SyslogIdentifier=shipping
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
